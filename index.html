@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>演示Vue</title>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      {{message | filters2 | filters3(true, priceCount)}}
+    </div>
+  </body>
+  <script src="./vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 100,
+        priceCount: .8
+      },
+      filters: {
+        filters2: function(arg) {
+          console.log("arg: " +arg);
+          if (arg > 90) {
+            return arg - 8;
+          } else {
+            return arg;
+          }
+        },
+        filters3: function(arg1, arg2, arg3) {
+          var res;
+          console.log("arg1: "+arg1);
+          console.log("arg2: "+arg2);
+          console.log("arg3: "+arg3);
+          if (arg2) {
+            res = (arg1 * 10 * arg3) / 10;
+            console.log("result"+res);
+            return res;
+          } else {
+            res = arg1;
+            console.log("result"+res);
+            return res;
+          }
+        }
+      }
+    })
+  </script>
+</html>
